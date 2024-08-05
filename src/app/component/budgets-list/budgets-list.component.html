@@ -1,0 +1,70 @@
+<div class="owerflow-x-auto">
+  <div class="  bg-white border-none   my-4 py-4   dark:border-gray-700">
+
+<a href="/create" class="h-10 px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create Budget</a>
+ <form class="w-full px-4 py-2 border-solid border-2 border-sky-500 mt-2 ">
+  <div class="mb-6">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="createdDate">
+      Date
+    </label>
+    <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="date" #startDate name="startDate" required >
+
+  </div>
+  <div class="mb-6">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="createdDate">
+      Date
+    </label>
+    <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="date" #endDate name="endDate" required >
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" (click)="filterBudgets( startDate , endDate)" >
+        Filter
+      </button>
+
+    </div>
+  </div>
+ </form>
+   </div>
+  <table class="table-auto w-full border-solid border-2 border-sky-500">
+    <thead class="border-solid border-2 border-sky-500">
+      <tr class="border-solid border-2 border-sky-500">
+        <th class="px-4 py-2 border-solid border-2 border-sky-500">Id</th>
+        <th class="px-4 py-2 border-solid border-2 border-sky-500">Date </th>
+        <th class="px-4 py-2 border-solid border-2 border-sky-500">Expense Title</th>
+        <th class="px-4 py-2 border-solid border-2 border-sky-500">Income Title</th>
+
+      </tr>
+
+    </thead>
+      <tbody class="border-solid border-2 border-sky-500">
+        <tr *ngFor="let item of data " class="border-solid border-2 border-sky-500">
+          <td class="px-4 py-2 border-solid border-2 border-sky-500 " >
+            {{ item.Id }}
+          </td>
+          <td class="px-4 py-2 border-solid border-2 border-sky-500" >
+            {{ item.createdDate }}
+          </td>
+          <td class="px-4 py-2 border-solid border-2 border-sky-500" >
+            {{ item.expenseTitle}}
+          </td>
+          <td  class="px-4 py-2 border-solid border-2 border-sky-500">
+            {{ item.incomeTitle}}
+          </td>
+        </tr>
+
+      </tbody>
+      <tfoot class="border-solid border-2 border-sky-500">
+           <tr  class="border-solid border-2 border-sky-500">
+            <th class="px-4 py-2 border-solid border-2 border-sky-500" colspan="3">Income Sum </th>
+            <td class="text-center">{{totalIncomeSum() | currency}} </td>
+           </tr>
+           <tr  class="border-solid border-2 border-sky-500">
+            <th class="px-4 py-2 border-solid border-2 border-sky-500" colspan="3">Expense Sum </th>
+            <td class="text-center">{{totalExpenseSum() |currency}}</td>
+           </tr>
+           <tr  class="border-solid border-2 border-sky-500">
+            <th class="px-4 py-2 border-solid border-2 border-sky-500" colspan="3"> Sum </th>
+            <td  class="text-center">{{totalSum() |currency}} </td>
+           </tr>
+      </tfoot >
+  </table>
+</div>
